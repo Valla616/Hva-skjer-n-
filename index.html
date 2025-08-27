@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hva skjer nå</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin: 0; padding: 0; background: #f4f4f4; }
+    header { background: #3f51b5; color: #fff; padding: 1rem; }
+    #clock { font-size: 2rem; margin-top: 0.5rem; }
+    main { padding: 1rem; }
+    ul { list-style: none; padding: 0; }
+    li { background: #fff; margin: 0.5rem 0; padding: 1rem; border-radius: 4px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .time { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hva skjer nå</h1>
+    <div id="clock">--:--:--</div>
+  </header>
+  <main>
+    <ul id="events">
+      <li><span class="time">09:00</span> - Morgenmøte</li>
+      <li><span class="time">12:00</span> - Lunsj</li>
+      <li><span class="time">15:00</span> - Statusoppdatering</li>
+    </ul>
+  </main>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const timeString = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      document.getElementById('clock').textContent = timeString;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
